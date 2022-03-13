@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Delivery\DeliveryboyController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,15 +24,15 @@ Route::get('/', function () {
 Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth'], 'namespace'=>'admin'], function (){
+Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (){
     Route::get('index', [AdminController::class, 'index'])->name('admin.index');
+    Route::resource('category', CategoryController::class);
 });
 
-Route::group(['prefix' => 'user','middleware' => ['user', 'auth'], 'namespace'=>'user'], function (){
+Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
     Route::get('index', [UserController::class, 'index'])->name('user.index');
 });
 
-Route::group(['prefix' => 'deliveryboy','middleware' => ['deliveryboy', 'auth'], 'namespace'=>'deliveryboy'], function (){
+Route::group(['prefix' => 'deliveryboy','middleware' => ['deliveryboy', 'auth']], function (){
     Route::get('index', [DeliveryboyController::class, 'index'])->name('delivery.index');
 });
