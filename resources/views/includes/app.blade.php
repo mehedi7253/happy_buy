@@ -1,6 +1,13 @@
 
 @include('includes.header')
-
+<style>
+    .imgPreview img {
+            padding: 5px;
+            max-width: 100px;
+            height: 100px;
+            border: 1px solid black;
+        }
+</style>
 <body>
     <!-- Left Panel -->
 
