@@ -16,3 +16,18 @@
 <script src="{{ asset('template/vendors/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
 <script src="{{ asset('template/vendors/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
 <script src="{{ asset('template/assets/js/init-scripts/data-table/datatables-init.js') }}"></script>
+<script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('application',
+        {
+            height:200,
+            resize_enabled:true,
+            wordcount: {
+                showParagraphs: false,
+                showWordCount: true,
+                showCharCount: true,
+                countSpacesAsChars: true,
+                countHTML: false,
+                maxCharCount: 20}
+        });
+</script>

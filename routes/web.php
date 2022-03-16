@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\GoogleMapController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Delivery\DeliveryboyController;
 use App\Http\Controllers\User\UserController;
@@ -30,7 +32,8 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::get('index', [AdminController::class, 'index'])->name('admin.index');
     Route::resource('category', CategoryController::class);
     Route::resource('shop', ShopController::class);
-    
+    Route::resource('google-map', GoogleMapController::class);
+    Route::resource('product', ProductController::class);
 });
 
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){

@@ -23,6 +23,7 @@
                                 <th>Description</th>
                                 <th>Status</th>
                                 <th>Action</th>
+                                <th>Map</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -48,6 +49,13 @@
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete !!');"><i class="fa fa-trash"></i></button>
                                         </form>
+                                    </td>
+                                    <td>
+                                        @if ($shop->google_map == NULL)
+                                            <a class="btn btn-primary" href="{{ route('google-map.edit',$shop->id) }}"><i class="fa fa-plus"></i></a>
+                                        @else
+                                            <a class="btn btn-primary" href="{{ route('shop.show',$shop->id) }}"><i class="fa fa-eye"></i></a>
+                                        @endif
                                     </td>
                                 </tr>
                             @endforeach

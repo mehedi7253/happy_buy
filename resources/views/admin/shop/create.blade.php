@@ -36,6 +36,15 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-6 col-sm-12 float-left">
+                            <label>URL <sup class="text-danger font-weight-bold">*</sup></label>
+                            <input type="text" name="url" placeholder="Enter Shop URL" class="form-control @error('url') is-invalid @enderror" value="{{ old('url') }}">
+                            @error('url')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-6 col-sm-12 float-left">
                             <label>Location <sup class="text-danger font-weight-bold">*</sup></label>
                             <input type="text" name="location" placeholder="Enter Shop Location" class="form-control @error('location') is-invalid @enderror" value="{{ old('location') }}">
                             @error('location')
@@ -62,11 +71,7 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group col-md-6 col-sm-12 float-left">
-                            <label>Status <sup class="text-danger font-weight-bold">*</sup></label><br/>
-                            <input type="radio" name="status" checked value="0"> Available
-                            <input type="radio" name="status" value="1"> Not Available <br/>
-                        </div>
+
                         <div class="form-group col-md-6 col-sm-12 float-left">
                             <label>Select Image <sup class="text-danger font-weight-bold">*</sup></label>
                             <input type="file" name="imageFile[]" id="images" max="3" multiple="multiple" placeholder="Enter Shop Information" class="form-control @error('imageFile') is-invalid @enderror">
@@ -76,8 +81,12 @@
                                 </span>
                             @enderror
                         </div>
-
-                        <div class="form-group col-md-6 col-sm-12">
+                        <div class="form-group col-md-6 col-sm-12 float-left">
+                            <label>Status <sup class="text-danger font-weight-bold">*</sup></label><br/>
+                            <input type="radio" name="status" checked value="0"> Available
+                            <input type="radio" name="status" value="1"> Not Available <br/>
+                        </div>
+                        <div class="form-group col-md-6 col-sm-12 mt-3">
                             <button type="submit"  name="btn" class="btn btn-secondary btn-block">Submit</button>
                         </div>
                         <div class="form-group col-md-6 col-sm-12 float-left text-center">
