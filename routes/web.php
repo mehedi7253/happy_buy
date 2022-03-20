@@ -35,7 +35,10 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('shop', ShopController::class);
     Route::resource('google-map', GoogleMapController::class);
     Route::resource('product', ProductController::class);
-    Route::resource('product-into-shop', ProductIntoShopController::class);
+    Route::get('all-product', [ProductIntoShopController::class, 'index'])->name('shop.product.index');
+    Route::get('product-into-shop', [ProductIntoShopController::class, 'create'])->name('shop.product.create');
+    Route::get('getProduct',[ProductIntoShopController::class, 'getProduct'])->name('getProduct');
+
 });
 
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
