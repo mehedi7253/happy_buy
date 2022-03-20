@@ -90,7 +90,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $page_name = "Product Details";
+        $product   = Product::find($id);
+        return view('admin.product.show', compact('page_name','product'));
     }
 
     /**
@@ -101,7 +103,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $page_name = "Update Product Details";
+        $categories   = Category::all()->where('status','0');
+        $product   = Product::find($id);
+        return view('admin.product.edit',compact('page_name','product','categories'));
     }
 
     /**
@@ -113,7 +118,45 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request,[
+            'category_id'   => 'required',
+            'product_name'  => 'required',
+            'product_price' => 'required',
+            'description'   => 'required',
+            'imageFile.*'  => 'mimes:jpeg,jpg,png|max:7048',
+        ],[
+            'category_id.required'   => "Please Enter Category",
+            'product_name.requried'  => "Please Enter Prodcut Name",
+            'product_price.required' => "Please Enter Product Price",
+            'description.required'   => "Please Enter Product Description",
+            'imageFile.mimes'        => 'Please Select Jpg, Png, Jpeg File',
+            'imageFile.mimes'        => 'Please Select Less Then 7MB File',
+        ]);
+
+        $product = Product::find($id);
+        $product->category_id    = $request->category_id;
+        $product->product_name   = $request->product_name;
+        $product->product_price  = $request->product_price;
+        $product->description    = $request->description;
+        $product->status         = $request->status;
+
+       if($request->imageFile == ''){
+           //
+       }else{
+        if($request->hasfile('imageFile')) {
+            foreach($request->file('imageFile') as $file)
+            {
+                $name = $file->getClientOriginalName();
+                $file->move(public_path().'/product/', $name);
+                $imgData[] = $name;
+            }
+            $product->name       = json_encode($imgData);
+            $product->image_path = json_encode($imgData);
+        }
+       }
+
+       $product->save();
+       return redirect()->route('product.index')->with('success','Product Data Update Successful');
     }
 
     /**
@@ -124,6 +167,8 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        return back()->with('success','Product Removed Successful');
     }
 }

@@ -36,6 +36,13 @@
                         <li><i class="fa fa-edit"></i><a href="{{ route('product.index') }}">Manage Prodcut</a></li>
                     </ul>
                 </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Add Product In Shop</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-plus"></i><a href="{{ route('product-into-shop.create') }}">Add Product</a></li>
+                        <li><i class="fa fa-edit"></i><a href="{{ route('product-into-shop.index') }}">Manage Prodcut</a></li>
+                    </ul>
+                </li>
             @elseif (Auth::user()->role_id == '2')
 
             @elseif (Auth::user()->role_id == '3')
