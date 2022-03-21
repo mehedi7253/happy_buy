@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DeliverymanController;
 use App\Http\Controllers\Admin\GoogleMapController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductIntoShopController;
@@ -41,6 +42,8 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::post('store-product', [ProductIntoShopController::class, 'store'])->name('store.product.shop');
     Route::get('shop-products/{id}', [ProductIntoShopController::class, 'show'])->name('product.shop.show');
     Route::delete('shpop-prodcut-delete/{id}', [ProductIntoShopController::class, 'delete'])->name('product.shop.delete');
+    Route::resource('delivery-man', DeliverymanController::class);
+
 });
 
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
