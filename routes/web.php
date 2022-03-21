@@ -37,8 +37,10 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('product', ProductController::class);
     Route::get('all-product', [ProductIntoShopController::class, 'index'])->name('shop.product.index');
     Route::get('product-into-shop', [ProductIntoShopController::class, 'create'])->name('shop.product.create');
-    Route::get('getProduct',[ProductIntoShopController::class, 'getProduct'])->name('getProduct');
-
+    Route::post('get-product', [ProductIntoShopController::class, 'searchProduct'])->name('search.product');
+    Route::post('store-product', [ProductIntoShopController::class, 'store'])->name('store.product.shop');
+    Route::get('shop-products/{id}', [ProductIntoShopController::class, 'show'])->name('product.shop.show');
+    Route::delete('shpop-prodcut-delete/{id}', [ProductIntoShopController::class, 'delete'])->name('product.shop.delete');
 });
 
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){

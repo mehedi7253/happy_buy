@@ -14,74 +14,49 @@
                         </div>
                     @endif
 
-                    <form action="" method="POST">
+                    <form action="{{ route('search.product') }}" method="POST" role="search">
                         @csrf
-                        <div class="col-md-6 col-sm-12 float-left">
-                            <label>Select Shop</label>
-                            <select class="form-control" name="shop_id">
-                                <option>------Select Shop-------</option>
-                                @foreach ($shops as $shop)
-                                    <option value="{{ $shop->id }}">{{ $shop->shop_name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="col-md-6 col-sm-12 float-left">
-                            <label>Select Category</label>
-                            <select class="form-control" id="category" name="category_id">
+                        <div class="col-md-6 col-sm-12 float-left form-group">
+                            <label>Select Category</label> <br/>
+                            <select class="form-control" id="category_id" name="category_id">
                                 <option>------Select Category-------</option>
-                                <option value="" selected disabled>Select Category</option>
-                                @foreach ($categories as $key =>$categorie)
-                                    <option value="{{ $key }}">{{ $categorie->category_name }}</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-6 col-sm-12 float-left">
-                            <label>Select Product</label>
-                            <select name="state" id="state" class="form-control"></select>
+                        <div class="col-md-6 col-sm-12 float-left form-group mt-2">
+                            <button type="submit" id="search" class="btn btn-success mt-4 col-md-4 rounded">Submit</button>
                         </div>
                     </form>
+
+                    @if(isset($data))
+                        <form action="{{ route('store.product.shop') }}" method="POST">
+                            @csrf
+                            <div class="form-group col-md-12">
+                                <label>Select Shop</label>
+                                <select class="form-control col-6" name="shop_id">
+                                    <option>------Select Shop-------</option>
+                                    @foreach ($shops as $shop)
+                                        <option value="{{ $shop->id }}">{{ $shop->shop_name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label>Select Product <sup class="text-danger font-weight-bold">*</sup></label>
+                                <br/>
+                                @foreach ($data as $product)
+                                    <input value="{{ $product->category_id }}" name="category_id" hidden>
+                                    <input type="checkbox" name="product_id[]" value="{{ $product->id }}"> {{  $product->product_name  }} <br/>
+                                @endforeach
+                            </div>
+                            <div class="form-group col-md-12">
+                                <input type="submit" name="btn" class="btn btn-secondary rounded" value="Submit">
+                            </div>
+                        </form>
+                    @endif
                 </div>
             </div>
         </div>
 
-    @endsection
-
-    @section('script')
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-    <script>
-        // when category dropdown changes
-        $('#category').change(function() {
-
-            var categoryID = $(this).val();
-
-            if (categoryID) {
-
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url('getProduct') }}?category_id=" + categoryID,
-                    success: function(res) {
-
-                        if (res) {
-
-                            $("#state").empty();
-                            $("#state").append('<option>Select State</option>');
-                            $.each(res, function(key, value) {
-                                $("#state").append('<option value="' + key + '">' + value +
-                                    '</option>');
-                            });
-
-                        } else {
-
-                            $("#state").empty();
-                        }
-                    }
-                });
-            } else {
-
-                $("#state").empty();
-
-            }
-        });
-    </script>
     @endsection

@@ -19,13 +19,20 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-
+                                    <th>Shop Name</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td></td>
-                                </tr>
+                                @foreach ($shopProducts as $i=>$shopProduct)
+                                    <tr>
+                                        <td>{{ ++$i }}</td>
+                                        <td>{{ $shopProduct->shop_name }}</td>
+                                        <td>
+                                            <a href="{{ route('product.shop.show', $shopProduct->shop_id) }}" class="btn btn-success rounded">View</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
