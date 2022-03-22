@@ -50,9 +50,19 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'name'     => ['required', 'string', 'max:255','regex:/^[a-zA-Z-.\s]+$/'],
+            'email'    => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone'    => ['required', 'string', 'min:11', 'max:11','regex:/^[-0-9\+]+$/'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
+        ],[
+            'name.required'      => "please Enter Name",
+            'name.regex'         => "Please Enter Only Character Value",
+            'email.required'     => "Please Enter Email Address",
+            'email.unique'       => "This Email Already Registered",
+            'phone.required'     => "please Enter Phone Number",
+            'phone.min'          => "Phone Number Must Be 11 Digit",
+            'phone.max'          => "Phone Number Must Be 11 Digit",
+            'phone.regex'        => "Phone Number Must Be 11 Digit Long Numeric Value",
         ]);
     }
 
@@ -65,9 +75,11 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
+            'name'     => $data['name'],
+            'email'    => $data['email'],
             'password' => Hash::make($data['password']),
+            'role_id'  => '2',
+            'phone'    => $data['phone']
         ]);
     }
 }

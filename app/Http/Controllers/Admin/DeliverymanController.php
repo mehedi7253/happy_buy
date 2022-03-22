@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class DeliverymanController extends Controller
 {
@@ -28,7 +29,7 @@ class DeliverymanController extends Controller
     public function create()
     {
         $page_name = "Add Delivery Boy";
-        return view('admin.delivery-boy.create', compact('page_name','boys'));
+        return view('admin.delivery-boy.create', compact('page_name'));
     }
 
     /**
@@ -41,9 +42,27 @@ class DeliverymanController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required | uniqe:users',
-            'phone' => 'required'
+            'email' => 'required | unique:users',
+            'phone' => 'required | regex:/^([0-9\s\-\+\(\)]*)$/ | min:11 | max:11'
+        ],[
+            'name.required' => 'Please Enter Name',
+            'email.required' => 'Please Enter Email',
+            'email.unique'   => 'This Email All Ready Taken',
+            'phone.required' => "Please Enter Phone Number",
+            'phone.rgex'     => "Phone Number Must Be Numeric",
+            'phone.min'      => "Phone Number Must Be 11 Digit",
+            'phone.max'      => "Phone Number Must Be 11 Digit",
         ]);
+
+        $users = new User();
+        $users->name     = $request->name;
+        $users->email    = $request->email;
+        $users->phone    = $request->phone;
+        $users->password = Hash::make('1234');
+        $users->role_id  = 3;
+
+        $users->save();
+        return redirect()->route('delivery-man.index')->with('success','Added Successful');
     }
 
     /**
@@ -88,6 +107,8 @@ class DeliverymanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->delete();
+        return back()->with('success','Removed Successful');
     }
 }

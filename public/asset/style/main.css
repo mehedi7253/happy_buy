@@ -1,0 +1,32 @@
+.banner{
+    background-image: url(../../../images/banner.webp);
+    height: 550px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.slide_section {
+    height: 550px;
+    opacity: 1;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+}
+.shop_page{
+    background-image: url(../../../images/shop_banner.webp);
+    height: 200px;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+.shop_page_h1{
+    border: 2px solid white;
+    border-radius: 10px;
+    margin-top: 10%;
+    position: absolute;
+    width: 100%;
+    padding: 12px;
+    height: auto;
+    border-style: dashed;
+}
+

@@ -32,7 +32,7 @@ class ProductIntoShopController extends Controller
 
     public function searchProduct(Request $request)
     {
-        $page_name = "All Product and Shop List";
+        $page_name = "Add Category Into Shop";
         $categories  = Category::all();
         $shops     = shop::all();
         $search = $request->category_id;

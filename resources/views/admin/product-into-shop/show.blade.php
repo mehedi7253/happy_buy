@@ -18,19 +18,17 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Product </th>
                             <th>Category</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                       @foreach ($productShop as $i=>$products)
+                       @foreach ($productShop as $i=>$categories)
                             <tr>
                                 <td>{{ ++$i }}</td>
-                                <td>{{ $products->product_name }}</td>
-                                <td>{{ $products->category_name }}</td>
+                                <td>{{ $categories->category_name }}</td>
                                 <td>
-                                    <form action="{{ route('product.shop.delete', $products->ProductID) }}" method="POST">
+                                    <form action="{{ route('shop-category.destroy', $categories->ProductID) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete !!');"><i class="fa fa-trash"></i></button>

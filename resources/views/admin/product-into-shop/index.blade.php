@@ -4,7 +4,7 @@
         <div class="content mt-3 mb-5">
             <div class="card">
                 <div class="card-header">
-                    <h3>{{ $page_name }} <a href="{{ route('product.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Add Prodcut</a></h3>
+                    <h3>{{ $page_name }} <a href="{{ route('shop-category.create') }}" class="btn btn-primary float-right"><i class="fa fa-plus"></i> Add Category In Shop</a></h3>
                 </div>
                 <div class="card-body">
 					@if($message = Session::get('success'))
@@ -29,7 +29,7 @@
                                         <td>{{ ++$i }}</td>
                                         <td>{{ $shopProduct->shop_name }}</td>
                                         <td>
-                                            <a href="{{ route('product.shop.show', $shopProduct->shop_id) }}" class="btn btn-success rounded">View</a>
+                                            <a href="{{ route('shop-category.show', $shopProduct->shop_id) }}" class="btn btn-success rounded">View</a>
                                         </td>
                                     </tr>
                                 @endforeach

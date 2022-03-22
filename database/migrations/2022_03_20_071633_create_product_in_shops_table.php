@@ -16,11 +16,9 @@ class CreateProductInShopsTable extends Migration
         Schema::create('product_in_shops', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('category_id')->unsigned();
-            $table->bigInteger('product_id')->unsigned();
             $table->bigInteger('shop_id')->unsigned();
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('product_id')->references('id')->on('products')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('shop_id')->references('id')->on('shops')->onUpdate('cascade')->onDelete('cascade');
         });
     }

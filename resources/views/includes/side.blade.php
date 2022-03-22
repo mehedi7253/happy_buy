@@ -37,10 +37,17 @@
                     </ul>
                 </li>
                 <li class="menu-item-has-children dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Add Product In Shop</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Add category In Shop</a>
                     <ul class="sub-menu children dropdown-menu">
-                        <li><i class="fa fa-plus"></i><a href="{{ route('shop.product.create') }}">Add Product</a></li>
-                        <li><i class="fa fa-edit"></i><a href="{{ route('shop.product.index') }}">Manage Prodcut</a></li>
+                        <li><i class="fa fa-plus"></i><a href="{{ route('shop-category.create') }}">Add category</a></li>
+                        <li><i class="fa fa-edit"></i><a href="{{ route('shop-category.index') }}">Manage category</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Delivary Man</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-plus"></i><a href="{{ route('delivery-man.create') }}">Add Delivery Boy</a></li>
+                        <li><i class="fa fa-edit"></i><a href="{{ route('delivery-man.index') }}">Manage Delivery Boy</a></li>
                     </ul>
                 </li>
             @elseif (Auth::user()->role_id == '2')
