@@ -1,7 +1,7 @@
 @extends('pages.includes.app')
 
     @section('content')
-    <div class="col-md-8 mx-auto" style="margin-top: 10%">
+    <div class="col-md-8 mx-auto" style="margin-top: 5%">
         <div class="card mb-5">
             <div class="card-header">
                 <h3 class="text-center">User Registration</h3>

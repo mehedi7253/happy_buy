@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductIntoShopController;
 use App\Http\Controllers\Admin\ShopCategoryController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Delivery\DeliveryboyController;
+use App\Http\Controllers\Pages\CartController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -61,5 +62,9 @@ Route::group(['prefix' => 'deliveryboy','middleware' => ['deliveryboy', 'auth']]
 });
 
 //pages
-Route::get('{name}', [PageController::class,'singleShop'])->name('single.shop');
+Route::get('shop/{name}', [PageController::class,'singleShop'])->name('single.shop');
 Route::get('category/{id}', [PageController::class, 'prodcutCategory'])->name('category.shop.product');
+Route::PUT('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('product.add.cart');
+Route::get('cart',[CartController::class, 'index'])->name('cart.index');
+Route::PUT('quantity-update/{id}', [CartController::class, 'quantityUpdate'])->name('qauntity.update');
+Route::delete('remove-item/{id}', [CartController::class, 'removeItem'])->name('carts.destroy');

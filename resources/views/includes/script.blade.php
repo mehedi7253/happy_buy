@@ -20,7 +20,7 @@
 <script>
     CKEDITOR.replace('application',
         {
-            height:200,
+            height:300,
             resize_enabled:true,
             wordcount: {
                 showParagraphs: false,

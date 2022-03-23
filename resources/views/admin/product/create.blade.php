@@ -61,6 +61,15 @@
                                 <input type="radio" name="status" value="1"> Not Available <br/>
                             </div>
                             <div class="form-group">
+                                <label>Select Banner <sup class="text-danger font-weight-bold">*</sup></label>
+                                <input type="file" name="banner" class="form-control @error('banner') is-invalid @enderror">
+                                @error('banner')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
                                 <label>Select Image <sup class="text-danger font-weight-bold">*</sup></label>
                                 <input type="file" name="imageFile[]" id="images" max="3" multiple="multiple" placeholder="Enter Shop Information" class="form-control @error('imageFile') is-invalid @enderror">
                                 @error('imageFile')

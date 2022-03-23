@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->string('product_name');
             $table->float('product_price');
+            $table->string('banner');
             $table->string('name')->nullable();
             $table->string('image_path')->nullable();
             $table->longText('description');

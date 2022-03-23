@@ -8,18 +8,25 @@
                 </div>
 
                 @foreach ($category as $products)
-                    <div class="col-md-4 col-sm-12 float-left mt-3 mb-5">
-                        <div class="card">
+                    <div class="col-md-3 col-sm-12 float-left mt-3 mb-5">
+                        <div class="card" style="border: 1px solid black;">
+                            <img src="{{ asset('product/'.$products->banner ) }}" class="card-img-top" style="height: 200px; width: 100%; border-radius: 10px">
                             <div class="card-body">
-
+                                <p class="text-center font-weight-bold">{{ $products->product_name }}</p>
+                                <p class="text-center font-weight-bold">{{ number_format($products->product_price,2) }}</p>
                             </div>
                             <div class="card-footer">
-{{ $products->shop_id }}
+                                <form action="{{ route('product.add.cart',$products->id) }}" method="POST">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-outline-primary btn-block"><i class="fa fa-shopping-basket"></i> Add To Cart</button>
+                                </form>
+                                <br/>
+                                <a href="#" class="btn  btn-dark btn-block"> View Details</a>
                             </div>
                         </div>
                     </div>
                 @endforeach
-
 
             </div>
         </div>

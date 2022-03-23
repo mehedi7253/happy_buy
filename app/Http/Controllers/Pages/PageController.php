@@ -29,11 +29,11 @@ class PageController extends Controller
 
     public function prodcutCategory($id)
     {
-        $category = DB::table('product_in_shops')
-            ->join('products','products.category_id', '=', 'product_in_shops.category_id')
-            ->where('product_in_shops.category_id', '=', $id)
+        $category = DB::table('categories')
+            ->join('products', 'products.category_id', 'categories.id')
+            ->where('categories.id', $id)
             ->get();
 
-            return view('pages.category.index', compact('category'));
+        return view('pages.category.index', compact('category'));
     }
 }
