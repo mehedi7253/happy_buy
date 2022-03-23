@@ -15,14 +15,16 @@ class CartController extends Controller
     {
         if(Auth::check())
         {
+            $user_id = Auth::user()->id;
+
             $page_name = "Cart Item";
             $items = DB::table('carts')
-            ->join('products','products.id','carts.product_id')
-            ->select('products.*', 'carts.id as cartID', 'carts.quantity', 'carts.sell_price', 'carts.user_id')
-            ->where('carts.user_id', Auth::user()->id)
-            ->get();
+                ->join('products','products.id','carts.product_id')
+                ->select('products.*', 'carts.id as cartID', 'carts.quantity', 'carts.sell_price', 'carts.user_id')
+                ->where('carts.user_id', $user_id)
+                ->get();
 
-            $subtotal = DB::select(DB::raw("SELECT SUM(sell_price * quantity) as SubTotal FROM carts WHERE user_id = 'Auth::user()->id'"));
+            $subtotal = DB::select(DB::raw("SELECT SUM(sell_price * quantity) as SubTotal FROM carts WHERE user_id = '$user_id'"));
 
             return view('pages.cart.index', compact('page_name','items','subtotal'));
         }else{
