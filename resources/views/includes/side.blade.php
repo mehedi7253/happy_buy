@@ -13,7 +13,7 @@
         <ul class="nav navbar-nav">
             @if (Auth::user()->role_id == '1')
                 <li class="active">
-                    <a href="index.html"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <a href=""> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Categories</a>
@@ -52,8 +52,31 @@
                 </li>
             @elseif (Auth::user()->role_id == '2')
 
-            @elseif (Auth::user()->role_id == '3')
+                <li class="active">
+                    <a href=""> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Profile</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-plus"></i><a href="{{ route('user.profile-update') }}">Update Profile</a></li>
+                        <li><i class="fa fa-edit"></i><a href="{{ route('user.changepass') }}">Change Password</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="{{ route('order-lists.index') }}"> <i class="menu-icon fa fa-bars"></i></i>Order List </a>
+                </li>
 
+            @elseif (Auth::user()->role_id == '3')
+                <li class="active">
+                    <a href=""> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Profile</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-plus"></i><a href="{{ route('delivery.profile-update') }}">Update Profile</a></li>
+                        <li><i class="fa fa-edit"></i><a href="{{ route('delivery.changepass') }}">Change Password</a></li>
+                    </ul>
+                </li>
             @endif
 
         </ul>

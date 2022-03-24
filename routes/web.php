@@ -13,6 +13,7 @@ use App\Http\Controllers\Pages\CartController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\Pages\ProductOrderController;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\User\OrderlistController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,10 +58,20 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
 
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
     Route::get('index', [UserController::class, 'index'])->name('user.index');
+    Route::get('profile-update', [UserController::class, 'edit'])->name('user.profile-update');
+    Route::PUT('update',[UserController::class,'update'])->name('user.profile.update');
+    Route::get('change-password', [UserController::class, 'changePass'])->name('user.changepass');
+    Route::post('change-password', [UserController::class, 'store'])->name('user.password.store');
+
+    Route::resource('order-lists',OrderlistController::class);
 });
 
 Route::group(['prefix' => 'deliveryboy','middleware' => ['deliveryboy', 'auth']], function (){
     Route::get('index', [DeliveryboyController::class, 'index'])->name('delivery.index');
+    Route::get('profile-update', [UserController::class, 'edit'])->name('delivery.profile-update');
+    Route::PUT('update',[UserController::class,'update'])->name('delivery.profile.update');
+    Route::get('change-password', [UserController::class, 'changePass'])->name('delivery.changepass');
+    Route::post('change-password', [UserController::class, 'store'])->name('delivery.password.store');
 });
 
 //pages
