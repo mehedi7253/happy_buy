@@ -11,6 +11,8 @@ use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Delivery\DeliveryboyController;
 use App\Http\Controllers\Pages\CartController;
 use App\Http\Controllers\Pages\PageController;
+use App\Http\Controllers\Pages\ProductOrderController;
+use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -68,3 +70,16 @@ Route::PUT('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('prod
 Route::get('cart',[CartController::class, 'index'])->name('cart.index');
 Route::PUT('quantity-update/{id}', [CartController::class, 'quantityUpdate'])->name('qauntity.update');
 Route::delete('remove-item/{id}', [CartController::class, 'removeItem'])->name('carts.destroy');
+Route::post('order-product',[ProductOrderController::class, 'orderProduct'])->name('orderProduct');
+Route::get('next-orders/{id}', [ProductOrderController::class, 'nextOrder'])->name('next.order.show');
+
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);

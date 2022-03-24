@@ -47,7 +47,8 @@ class CartController extends Controller
                 ->get();
 
             if(count($cart_product) > 0){
-                return back()->with('error','Product Allready added on Your Cart');
+                DB::table('carts')->where('product_id','=', $product->id)->increment('quantity');
+                return back()->with('message','Product Add In Cart Successfull');
             }else{
                 $cart = new cart();
                 $cart->product_id  = $product->id;

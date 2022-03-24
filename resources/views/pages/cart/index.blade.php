@@ -96,7 +96,15 @@
                                         <td class="border-0"></td>
                                         <td class="border-0"></td>
                                         <td class="border-0">
-                                            <button type="submit" class="btn btn-success btn-block">Place Order</button>
+                                            <form action="{{ route('orderProduct') }}" method="POST">
+                                                @csrf
+                                                @foreach ($items as $i=>$item)
+                                                    <input name="product_id[]" value="{{ $item->id }}" hidden>
+                                                    <input name="quantity[]" value="{{ $item->quantity }}" hidden>
+                                                    <input name="sell_price[]" value="{{ $item->sell_price }}" hidden>
+                                                @endforeach
+                                                <button type="submit" class="btn btn-success btn-block">Place Order</button>
+                                            </form>
                                         </td>
                                         <td class="border-0"></td>
                                     </tr>
