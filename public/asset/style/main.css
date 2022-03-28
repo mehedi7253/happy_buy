@@ -89,3 +89,30 @@
     display: block;
     margin-top: 7px
 }
+
+/* image banner */
+ .main-Image{
+    height: 300px;
+    width: 100%;
+}
+.sub-image{
+    height: 100px;
+    width: 100px;
+}
+.div-one
+{
+    height: 300px;
+    width: 407px;
+    border:2px solid black;
+
+}
+.slider-image{
+    height: 450px;
+    width: 100%;
+}
+#watch{
+    background-color: silver;
+    color: black;
+    float: right;
+    text-align: center;
+}

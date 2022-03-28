@@ -88,7 +88,7 @@ Route::PUT('quantity-update/{id}', [CartController::class, 'quantityUpdate'])->n
 Route::delete('remove-item/{id}', [CartController::class, 'removeItem'])->name('carts.destroy');
 Route::post('order-product',[ProductOrderController::class, 'orderProduct'])->name('orderProduct');
 Route::get('next-orders/{id}', [ProductOrderController::class, 'nextOrder'])->name('next.order.show');
-
+Route::get('product-details/{id}', [PageController::class, 'product'])->name('product.details');
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);

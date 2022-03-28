@@ -22,7 +22,7 @@
                                     <button type="submit" class="btn btn-outline-primary btn-block"><i class="fa fa-shopping-basket"></i> Add To Cart</button>
                                 </form>
                                 <br/>
-                                <a href="#" class="btn  btn-dark btn-block"> View Details</a>
+                                <a href="{{ route('product.details',$products->id) }}" class="btn  btn-dark btn-block"> View Details</a>
                             </div>
                         </div>
                     </div>

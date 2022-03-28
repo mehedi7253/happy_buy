@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Product;
 use App\Models\shop;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -35,5 +36,11 @@ class PageController extends Controller
             ->get();
 
         return view('pages.category.index', compact('category'));
+    }
+
+    public function product($id)
+    {
+        $product = Product::find($id);
+        return view('pages.category.show', compact('product'));
     }
 }
