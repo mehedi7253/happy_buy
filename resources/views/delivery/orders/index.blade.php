@@ -12,11 +12,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Date</th>
+                                    <th>Order Date</th>
+                                    <th>Customer Name</th>
+                                    <th>Customer Phone</th>
                                     <th>Amount</th>
                                     <th>Payment</th>
-                                    <th>Status</th>
-                                    <th>Delivery Boy</th>
+                                    <th>Delivery</th>
                                     <th>Details</th>
                                 </tr>
                             </thead>
@@ -25,6 +26,8 @@
                                     <tr>
                                         <td>{{ ++$i }}</td>
                                         <td>{{ @date('d-m-Y', strtotime($order->created_at))  }}</td>
+                                        <td>{{ $order->name }}</td>
+                                        <td>{{ $order->phone }}</td>
                                         <td>{{number_format($order->amount,2) }}</td>
                                         <td>
                                             @if ($order->status == 'Processing')
@@ -37,27 +40,15 @@
                                             @if ($order->process_status == '1')
                                                 <label class="btn btn-outline-info btn-sm rounded">Rechived</label>
                                             @elseif ($order->process_status == '2')
-                                                <label class="btn btn-outline-primary btn-sm rounded">Processing</label>
+                                                <label class="btn btn-outline-primary btn-sm rounded">Picked</label>
                                             @elseif ($order->process_status == '3')
-                                                <label class="btn btn-outline-primary btn-sm rounded">Picked By Delivery Boy</label>
+                                                <label class="btn btn-outline-primary btn-sm rounded">Processing</label>
                                             @elseif ($order->process_status == '4')
                                                 <label class="btn btn-outline-success btn-sm rounded">Complete</label>
                                             @endif
                                         </td>
                                         <td>
-                                            @if ($order->delivery_boy_id == null)
-                                                <label class="text-danger">Not Assigned</label>
-                                            @else
-                                                @php
-                                                    $boy_name = DB::table('orders')->join('users','users.id', 'orders.delivery_boy_id')->where('orders.id',$order->id)->get();
-                                                @endphp
-                                                @foreach ($boy_name as $boy)
-                                                    <a href="">{{ $boy->name }} <sup class="text-success">Message Now</sup></a>
-                                                @endforeach
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('order-lists.show',$order->id) }}" class="btn btn-success btn-small rounded">View</a>
+                                            <a href="{{ route('delivery-orders.show',$order->id) }}" class="btn btn-success btn-small rounded">View</a>
                                         </td>
                                     </tr>
                                 @endforeach

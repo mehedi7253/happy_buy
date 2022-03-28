@@ -11,19 +11,29 @@
                 </form>
             </div>
 
+            @if (Auth::user()->role_id == '3')
             <div class="dropdown for-notification">
                 <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <i class="fa fa-bell"></i>
-                    <span class="count bg-danger">5</span>
+                    <span class="count bg-danger">
+                        @php
+                            $id = Auth::user()->id;
+                            $notification = DB::select(DB::raw("SELECT COUNT(delivery_boy_id) as Notify from orders WHERE delivery_boy_id = '$id'"));
+                        @endphp
+                        @foreach ($notification as $notifications)
+                            {{ $notifications->Notify }}
+                        @endforeach
+                    </span>
                 </button>
                 <div class="dropdown-menu" aria-labelledby="notification">
-                    <p class="red">You have 3 Notification</p>
-                    <a class="dropdown-item media bg-flat-color-1" href="#">
-                    <i class="fa fa-check"></i>
-                    <p>Server #1 overloaded.</p>
-                </a>
+                    <p class="red">You have
+                        @foreach ($notification as $notifications)
+                            {{ $notifications->Notify }}
+                        @endforeach Notification</p>
                 </div>
             </div>
+            @endif
+
 
 
         </div>
@@ -32,7 +42,7 @@
     <div class="col-sm-5">
         <div class="user-area dropdown float-right">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <img class="user-avatar rounded-circle" src="{{ asset('template/images/admin.jpg') }}" alt="User Avatar">
+                <img class="user-avatar rounded-circle" src="{{ asset('user/images/'.Auth::user()->image) }}">
             </a>
 
             <div class="user-menu dropdown-menu">

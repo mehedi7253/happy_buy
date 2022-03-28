@@ -45,6 +45,32 @@
                     </div>
                     <hr/>
                     <div class="row">
+                        <div class="col-md-12 col-sm-12">
+                            <div class="track">
+                                @if ($orders->process_status == '1')
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+                                    <div class="step"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Delivery Boy Picked </span> </div>
+                                    <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+                                    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Complete</span> </div>
+                                @elseif ($orders->process_status == '2')
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Delivery Boy Picked </span> </div>
+                                    <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+                                    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Complete</span> </div>
+                                @elseif ($orders->process_status == '3')
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Delivery Boy Picked </span> </div>
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+                                    <div class="step"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Complete</span> </div>
+                                @elseif ($orders->process_status == '4')
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order confirmed</span> </div>
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text"> Delivery Boy Picked </span> </div>
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text"> On the way </span> </div>
+                                    <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Complete</span> </div>
+                                @endif
+
+                            </div>
+                        </div>
 
                     </div>
                     <hr/>

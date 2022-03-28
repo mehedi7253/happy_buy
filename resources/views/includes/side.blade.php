@@ -50,6 +50,12 @@
                         <li><i class="fa fa-edit"></i><a href="{{ route('delivery-man.index') }}">Manage Delivery Boy</a></li>
                     </ul>
                 </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Order List</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-plus"></i><a href="{{ route('orders.index') }}">Order List</a></li>
+                    </ul>
+                </li>
             @elseif (Auth::user()->role_id == '2')
 
                 <li class="active">
@@ -76,6 +82,9 @@
                         <li><i class="fa fa-plus"></i><a href="{{ route('delivery.profile-update') }}">Update Profile</a></li>
                         <li><i class="fa fa-edit"></i><a href="{{ route('delivery.changepass') }}">Change Password</a></li>
                     </ul>
+                </li>
+                 <li class="menu-item-has-children">
+                    <a href="{{ route('delivery-orders.index') }}"> <i class="menu-icon fa fa-bars"></i>Order List </a>
                 </li>
             @endif
 

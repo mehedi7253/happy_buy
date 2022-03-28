@@ -4,11 +4,13 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DeliverymanController;
 use App\Http\Controllers\Admin\GoogleMapController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductIntoShopController;
 use App\Http\Controllers\Admin\ShopCategoryController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Delivery\DeliveryboyController;
+use App\Http\Controllers\Delivery\OrderdeliveryController;
 use App\Http\Controllers\Pages\CartController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\Pages\ProductOrderController;
@@ -53,6 +55,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
 
     Route::resource('shop-category', ShopCategoryController::class);
     Route::resource('delivery-man', DeliverymanController::class);
+    Route::resource('orders',OrderController::class);
 
 });
 
@@ -68,10 +71,12 @@ Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
 
 Route::group(['prefix' => 'deliveryboy','middleware' => ['deliveryboy', 'auth']], function (){
     Route::get('index', [DeliveryboyController::class, 'index'])->name('delivery.index');
-    Route::get('profile-update', [UserController::class, 'edit'])->name('delivery.profile-update');
-    Route::PUT('update',[UserController::class,'update'])->name('delivery.profile.update');
-    Route::get('change-password', [UserController::class, 'changePass'])->name('delivery.changepass');
-    Route::post('change-password', [UserController::class, 'store'])->name('delivery.password.store');
+    Route::get('profile-update', [DeliveryboyController::class, 'edit'])->name('delivery.profile-update');
+    Route::PUT('update',[DeliveryboyController::class,'update'])->name('delivery.profile.update');
+    Route::get('change-password', [DeliveryboyController::class, 'changePass'])->name('delivery.changepass');
+    Route::post('change-password', [DeliveryboyController::class, 'store'])->name('delivery.password.store');
+
+    Route::resource('delivery-orders', OrderdeliveryController::class);
 });
 
 //pages
