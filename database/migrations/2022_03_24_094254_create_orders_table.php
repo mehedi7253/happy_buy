@@ -27,6 +27,7 @@ class CreateOrdersTable extends Migration
             $table->string('invoice_number');
             $table->string('process_status')->nullable();
             $table->bigInteger('delivery_boy_id')->nullable();
+            $table->string('rate')->nullable();
             $table->timestamps();
         });
     }

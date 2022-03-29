@@ -88,6 +88,7 @@ class OrderdeliveryController extends Controller
     {
         $order = order::find($id);
         $order->process_status  = $request->process_status;
+        $order->rate            = 1;
         $order->save();
 
         return back()->with('success', 'Order Update Successfull');
