@@ -17,7 +17,6 @@
                                     <th>Payment</th>
                                     <th>Status</th>
                                     <th>Delivery Boy</th>
-                                    <th>Rate</th>
                                     <th>Details</th>
                                 </tr>
                             </thead>
@@ -55,13 +54,6 @@
                                                 @foreach ($boy_name as $boy)
                                                     <a href="">{{ $boy->name }} <sup class="text-success">Message Now</sup></a>
                                                 @endforeach
-                                            @endif
-                                        </td>
-                                        <td>
-                                            @if ($order->rate == '1')
-                                                <a href="{{ route('ratings.show',$order->id) }}" class="btn btn-outline-primary btn-sm">Give Your Rating</a>
-                                            @else
-                                                <label class="btn btn-outline-danger btn-danger rounded">Order Not Complete </label>
                                             @endif
                                         </td>
                                         <td>
