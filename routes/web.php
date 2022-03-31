@@ -14,6 +14,7 @@ use App\Http\Controllers\Delivery\OrderdeliveryController;
 use App\Http\Controllers\Pages\CartController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\Pages\ProductOrderController;
+use App\Http\Controllers\Pages\RatingController;
 use App\Http\Controllers\SslCommerzPaymentController;
 use App\Http\Controllers\User\OrderlistController;
 use App\Http\Controllers\User\UserController;
@@ -77,6 +78,7 @@ Route::group(['prefix' => 'deliveryboy','middleware' => ['deliveryboy', 'auth']]
     Route::post('change-password', [DeliveryboyController::class, 'store'])->name('delivery.password.store');
 
     Route::resource('delivery-orders', OrderdeliveryController::class);
+
 });
 
 //pages
@@ -89,6 +91,7 @@ Route::delete('remove-item/{id}', [CartController::class, 'removeItem'])->name('
 Route::post('order-product',[ProductOrderController::class, 'orderProduct'])->name('orderProduct');
 Route::get('next-orders/{id}', [ProductOrderController::class, 'nextOrder'])->name('next.order.show');
 Route::get('product-details/{id}', [PageController::class, 'product'])->name('product.details');
+Route::resource('ratings', RatingController::class);
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);

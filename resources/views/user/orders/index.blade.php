@@ -59,7 +59,7 @@
                                         </td>
                                         <td>
                                             @if ($order->rate == '1')
-                                                <a href="" class="btn btn-outline-primary btn-sm">Give Your Rating</a>
+                                                <a href="{{ route('ratings.show',$order->id) }}" class="btn btn-outline-primary btn-sm">Give Your Rating</a>
                                             @else
                                                 <label class="btn btn-outline-danger btn-danger rounded">Order Not Complete </label>
                                             @endif

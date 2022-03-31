@@ -41,6 +41,7 @@ class PageController extends Controller
     public function product($id)
     {
         $product = Product::find($id);
-        return view('pages.category.show', compact('product'));
+        $rating = DB::select(DB::raw("SELECT AVG(rating) as AvarageRating, COUNT(user_id) AS User FROM ratings WHERE product_id = $id"));
+        return view('pages.category.show', compact('product','rating'));
     }
 }
