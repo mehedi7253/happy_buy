@@ -86,6 +86,9 @@
                  <li class="menu-item-has-children">
                     <a href="{{ route('delivery-orders.index') }}"> <i class="menu-icon fa fa-bars"></i>Order List </a>
                 </li>
+                 <li class="menu-item-has-children">
+                    <a href="{{ route('deliver-chat.index') }}"> <i class="menu-icon fa fa-bars"></i>Message List </a>
+                </li>
             @endif
 
         </ul>

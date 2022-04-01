@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductIntoShopController;
 use App\Http\Controllers\Admin\ShopCategoryController;
 use App\Http\Controllers\Admin\ShopController;
+use App\Http\Controllers\Delivery\DeliverChatController;
 use App\Http\Controllers\Delivery\DeliveryboyController;
 use App\Http\Controllers\Delivery\OrderdeliveryController;
 use App\Http\Controllers\Pages\CartController;
@@ -16,6 +17,7 @@ use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\Pages\ProductOrderController;
 use App\Http\Controllers\Pages\RatingController;
 use App\Http\Controllers\SslCommerzPaymentController;
+use App\Http\Controllers\User\ChatController;
 use App\Http\Controllers\User\OrderlistController;
 use App\Http\Controllers\User\UserController;
 use Illuminate\Support\Facades\Route;
@@ -68,6 +70,8 @@ Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
     Route::post('change-password', [UserController::class, 'store'])->name('user.password.store');
 
     Route::resource('order-lists',OrderlistController::class);
+    Route::resource('chats', ChatController::class);
+
 });
 
 Route::group(['prefix' => 'deliveryboy','middleware' => ['deliveryboy', 'auth']], function (){
@@ -78,7 +82,7 @@ Route::group(['prefix' => 'deliveryboy','middleware' => ['deliveryboy', 'auth']]
     Route::post('change-password', [DeliveryboyController::class, 'store'])->name('delivery.password.store');
 
     Route::resource('delivery-orders', OrderdeliveryController::class);
-
+    Route::resource('deliver-chat', DeliverChatController::class);
 });
 
 //pages

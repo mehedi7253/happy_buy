@@ -52,7 +52,7 @@
                                                     $boy_name = DB::table('orders')->join('users','users.id', 'orders.delivery_boy_id')->where('orders.id',$order->id)->get();
                                                 @endphp
                                                 @foreach ($boy_name as $boy)
-                                                    <a href="">{{ $boy->name }} <sup class="text-success">Message Now</sup></a>
+                                                    <a href="{{ route('chats.show', $order->delivery_boy_id) }}">{{ $boy->name }} <sup class="text-success">Message Now</sup></a>
                                                 @endforeach
                                             @endif
                                         </td>
