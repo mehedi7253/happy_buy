@@ -86,6 +86,7 @@ Route::group(['prefix' => 'deliveryboy','middleware' => ['deliveryboy', 'auth']]
 });
 
 //pages
+Route::get('shops', [PageController::class, 'allShop'])->name('allshop.shop');
 Route::get('shop/{name}', [PageController::class,'singleShop'])->name('single.shop');
 Route::get('category/{id}', [PageController::class, 'prodcutCategory'])->name('category.shop.product');
 Route::PUT('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('product.add.cart');

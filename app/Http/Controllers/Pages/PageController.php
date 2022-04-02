@@ -16,6 +16,12 @@ class PageController extends Controller
         return view('pages.shop.index', compact('shops'));
     }
 
+    public function allShop()
+    {
+        $shop = shop::all();
+        return view('pages.shop.allshop', compact('shop'));
+    }
+
     public function singleShop($name)
     {
         $shops = DB::table('shops')->where('url','=',$name)->get();

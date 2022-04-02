@@ -7,7 +7,7 @@
       <ul class="navbar-nav mr-auto">
 
         <li class="nav-item active">
-          <a class="nav-link" href="#">Shop</a>
+          <a class="nav-link" href="{{ route('allshop.shop') }}">Shop</a>
         </li>
         <li class="nav-item active">
           <a class="nav-link" href="#">Contact Us</a>
