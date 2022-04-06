@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\GoogleMapController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductIntoShopController;
+use App\Http\Controllers\Admin\ReportController;
 use App\Http\Controllers\Admin\ShopCategoryController;
 use App\Http\Controllers\Admin\ShopController;
 use App\Http\Controllers\Delivery\DeliverChatController;
@@ -59,7 +60,8 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('shop-category', ShopCategoryController::class);
     Route::resource('delivery-man', DeliverymanController::class);
     Route::resource('orders',OrderController::class);
-
+    Route::get('reports', [ReportController::class, 'index'])->name('report.index');
+    Route::get('reports/search', [ReportController::class, 'search'])->name('reports.search');
 });
 
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){
