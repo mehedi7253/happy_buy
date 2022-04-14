@@ -14,6 +14,7 @@ use App\Http\Controllers\Delivery\DeliverChatController;
 use App\Http\Controllers\Delivery\DeliveryboyController;
 use App\Http\Controllers\Delivery\OrderdeliveryController;
 use App\Http\Controllers\Pages\CartController;
+use App\Http\Controllers\Pages\ContactUsController;
 use App\Http\Controllers\Pages\PageController;
 use App\Http\Controllers\Pages\ProductOrderController;
 use App\Http\Controllers\Pages\RatingController;
@@ -99,6 +100,8 @@ Route::post('order-product',[ProductOrderController::class, 'orderProduct'])->na
 Route::get('next-orders/{id}', [ProductOrderController::class, 'nextOrder'])->name('next.order.show');
 Route::get('product-details/{id}', [PageController::class, 'product'])->name('product.details');
 Route::resource('ratings', RatingController::class);
+Route::resource('contact-us', ContactUsController::class);
+Route::get('offer-products', [PageController::class, 'offerProduct'])->name('offer.product');
 
 // SSLCOMMERZ Start
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);

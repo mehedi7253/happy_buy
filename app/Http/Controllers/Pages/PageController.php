@@ -39,15 +39,26 @@ class PageController extends Controller
         $category = DB::table('categories')
             ->join('products', 'products.category_id', 'categories.id')
             ->where('categories.id', $id)
+            ->where('products.type', 'Regular')
             ->get();
 
         return view('pages.category.index', compact('category'));
+    }
+
+    public function offerProduct()
+    {
+       $offers = Product::all()->where('type', 'Offer');
+       return view('pages.offer.index', compact('offers'));
     }
 
     public function product($id)
     {
         $product = Product::find($id);
         $rating = DB::select(DB::raw("SELECT AVG(rating) as AvarageRating, COUNT(user_id) AS User FROM ratings WHERE product_id = $id"));
-        return view('pages.category.show', compact('product','rating'));
+        $totalSell = DB::select(DB::raw("SELECT COUNT(product_id) as TotalSell FROM productorders WHERE product_id = $id"));
+
+        return view('pages.category.show', compact('product','rating', 'totalSell'));
     }
+
+
 }

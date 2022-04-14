@@ -46,6 +46,7 @@ class ProductController extends Controller
             'product_name'  => 'required',
             'product_price' => 'required',
             'description'   => 'required',
+            'type'          => 'required',
             'banner'        => 'required |mimes:jpeg,jpg,png|max:7048',
             'imageFile.*'  => 'mimes:jpeg,jpg,png|max:7048',
         ],[
@@ -53,6 +54,7 @@ class ProductController extends Controller
             'product_name.requried'  => "Please Enter Prodcut Name",
             'product_price.required' => "Please Enter Product Price",
             'description.required'   => "Please Enter Product Description",
+            'type.required'          => "Please Select Type",
             'banner.required'        => "Please Select an Banner",
             'banner.mimes'           => 'Please Select Jpg, Png, Jpeg File',
             'banner.mimes'           => 'Please Select Less Then 7MB File',
@@ -66,6 +68,8 @@ class ProductController extends Controller
         $product->product_price  = $request->product_price;
         $product->description    = $request->description;
         $product->status         = $request->status;
+        $product->type           = $request->type;
+        $product->special_price  = $request->special_price;
 
 
         if ($request->hasFile('banner')) {
@@ -156,6 +160,8 @@ class ProductController extends Controller
         $product->product_price  = $request->product_price;
         $product->description    = $request->description;
         $product->status         = $request->status;
+        $product->type           = $request->type;
+        $product->special_price  = $request->special_price;
 
        if($request->imageFile == ''){
            //

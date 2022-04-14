@@ -18,10 +18,12 @@ class CreateProductsTable extends Migration
             $table->bigInteger('category_id')->unsigned();
             $table->string('product_name');
             $table->float('product_price');
+            $table->float('special_price')->nullable();
             $table->string('banner');
             $table->string('name')->nullable();
             $table->string('image_path')->nullable();
             $table->longText('description');
+            $table->string('type')->default('regular');
             $table->bigInteger('status');
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories')->onUpdate('cascade')->onDelete('cascade');

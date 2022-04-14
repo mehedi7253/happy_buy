@@ -22,12 +22,15 @@
             <div class="collapse navbar-collapse" id="navbarText">
               <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item active">
-                  <a class="nav-link" href="{{ route('allshop.shop') }}">Shop</a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="#">Contact Us</a>
-                </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('allshop.shop') }}">Shop</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('offer.product') }}">Offer</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ route('contact-us.index') }}">Contact Us</a>
+                    </li>
               </ul>
 
                 <ul class="navbar-nav ml-auto">

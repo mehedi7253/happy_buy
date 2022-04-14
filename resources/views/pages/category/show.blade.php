@@ -19,11 +19,13 @@
                             <p class="ml-2 text-capitalize font-weight-bold">Category: <span class="font-weight-bold text-danger"> {{ $product->Categories->category_name }}</span></p>
                             <p class="ml-2 text-capitalize font-weight-bold">Product Price:<span class="font-weight-bold text-danger"> {{ number_format($product->product_price,2) }}</span></p>
 
-                          @foreach ($rating as $ratings)
-                            <p class="ml-2 text-capitalize font-weight-bold">Aravrage Rating: <span class="font-weight-bold text-danger"> {{ $ratings->AvarageRating }} Based On {{ $ratings->User }} User</span>  </p>
-                          @endforeach
+                            @foreach ($rating as $ratings)
+                                <p class="ml-2 text-capitalize font-weight-bold">Aravrage Rating: <span class="font-weight-bold text-danger"> {{ $ratings->AvarageRating }} Based On {{ $ratings->User }} User</span>  </p>
+                            @endforeach
 
-                            <p class="ml-2 text-capitalize font-weight-bold">Total Sell: <span class="font-weight-bold text-danger"> 4</span></p>
+                            @foreach ($totalSell as $sell)
+                                <p class="ml-2 text-capitalize font-weight-bold">Total Sell: <span class="font-weight-bold text-danger">  {{ $sell->TotalSell }} </span></p>
+                             @endforeach
                             <p class="ml-2">
                                 <?php echo $product->description?>
                             </p>

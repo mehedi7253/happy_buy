@@ -17,7 +17,7 @@
                        <p class="text-center"><i class="fa fa-info text-success" ></i> {{ $shop->id }}</p>
                 </div>
 
-                <div class="col-md-6 col-sm-12 float-left mt-5 mb-5">
+                <div class="col-md-10 col-sm-12 float-left mt-5 mb-5">
 
                     @php
                     $category = DB::table('product_in_shops')
@@ -27,7 +27,7 @@
                         ->get();
                     @endphp
                     @foreach ($category as $categories)
-                        <div class="col-md-4 col-sm-12 float-left" >
+                        <div class="col-md-3 col-sm-12 float-left" >
                             <div class="card">
                                 <div class="card-body text-center">
                                  <a href="{{ route('category.shop.product', $categories->id) }}" style="text-decoration: none">
@@ -39,10 +39,6 @@
                             </div>
                         </div>
                     @endforeach
-                </div>
-
-                <div class="col-md-4 col-sm-12 float-left mt-5 mb-5" style="border: 2px solid red; border-radius: 10px">
-
                 </div>
             </div>
         </div>

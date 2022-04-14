@@ -36,6 +36,10 @@
                                 @enderror
                             </div>
                             <div class="form-group">
+                                <label>Offer Price: <sup class="font-weight-bold text-danger">Select Only Offer Product</sup></label>
+                                <input type="number" name="special_price" class="form-control" value="{{ old('special_price') }}">
+                            </div>
+                            <div class="form-group">
                                 <label>Description <sup class="text-danger font-weight-bold">*</sup></label><br/>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="application"></textarea>
                                 @error('description')
@@ -53,6 +57,13 @@
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" {{ $category->id == $category->id ? 'selected' : '' }}>{{ $category->category_name }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                             <div class="form-group">
+                                <label>prdocut Type: <sup class="font-weight-bold text-danger">*</sup></label>
+                                <select class="form-control" name="type">
+                                    <option value="Regular">Regular</option>
+                                    <option value="Offer">Offer</option>
                                 </select>
                             </div>
                             <div class="form-group">
