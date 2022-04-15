@@ -28,7 +28,8 @@
                                             <td>
                                                 <img src="{{ asset('product/'.$item->banner) }}" style="height: 50px; width: 100%">
                                             </td>
-                                            <td>{{ number_format($item->product_price, 2) }}</td>
+                     
+                                            <td>{{ number_format($item->sell_price, 2) }}</td>
                                             <td style="width: 30%">
                                                 <form action="{{ route('qauntity.update', $item->cartID) }}" method="post">
                                                     @csrf

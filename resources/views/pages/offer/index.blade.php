@@ -22,7 +22,7 @@
                                 <img src="{{ asset('product/'.$products->banner ) }}" class="card-img-top" style="height: 200px; width: 100%; border-radius: 10px">
                                 <div class="card-body">
                                     <p class="text-center font-weight-bold">{{ $products->product_name }}</p>
-                                    <p class="text-center font-weight-bold">{{ number_format($products->product_price,2) }}</p>
+                                    <p class="text-center font-weight-bold">{{ number_format($products->special_price,2) }}</p>
                                 </div>
                                 <div class="card-footer">
                                     <form action="{{ route('product.add.cart',$products->id) }}" method="POST">

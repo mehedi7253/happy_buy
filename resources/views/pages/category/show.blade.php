@@ -17,7 +17,12 @@
                         <div class=" ml-5">
                             <h3 class="ml-2 text-capitalize">Product Name: <span class="font-weight-bold text-danger">{{ $product->product_name }}</span></h3>
                             <p class="ml-2 text-capitalize font-weight-bold">Category: <span class="font-weight-bold text-danger"> {{ $product->Categories->category_name }}</span></p>
-                            <p class="ml-2 text-capitalize font-weight-bold">Product Price:<span class="font-weight-bold text-danger"> {{ number_format($product->product_price,2) }}</span></p>
+                            @if ($product->special_price == '')
+                                <p class="ml-2 text-capitalize font-weight-bold">Product Price:<span class="font-weight-bold text-danger" > {{ number_format($product->product_price,2) }}</span></p>
+                            @else
+                                <p class="ml-2 text-capitalize font-weight-bold">Product Price:<del class="font-weight-bold text-danger" > {{ number_format($product->product_price,2) }}</del></p>
+                                <p class="ml-2 text-capitalize font-weight-bold">Offer Price:<span class="font-weight-bold text-danger"> {{ number_format($product->special_price,2) }}</span></p>
+                            @endif
 
                             @foreach ($rating as $ratings)
                                 <p class="ml-2 text-capitalize font-weight-bold">Aravrage Rating: <span class="font-weight-bold text-danger"> {{ $ratings->AvarageRating }} Based On {{ $ratings->User }} User</span>  </p>

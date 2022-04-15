@@ -50,12 +50,21 @@ class CartController extends Controller
                 DB::table('carts')->where('product_id','=', $product->id)->increment('quantity');
                 return back()->with('message','Product Add In Cart Successfull');
             }else{
+
+
+
                 $cart = new cart();
                 $cart->product_id  = $product->id;
                 $cart->user_id     = Auth::user()->id;
                 $cart->shop_id     = 1;
                 $cart->quantity    = 1;
-                $cart->sell_price  = $product->product_price;
+
+                if ($product->type == 'Regular') {
+                    $cart->sell_price  = $product->product_price;
+                } else {
+                    $cart->sell_price  = $product->special_price;
+                }
+
                 $cart->invoice_nuber = 123;
                 $cart->save();
                 return back()->with('message','Product Add In Cart Successfull');
