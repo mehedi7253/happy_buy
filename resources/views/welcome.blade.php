@@ -110,10 +110,46 @@
         </div>
       </section>
 
-
-
-
     <section class="shop">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 mb-5 mt-5">
+                    <h3 class="text-center text-uppercase font-weight-bold mb-3">Offer Products</h3>
+                </div>
+                @php
+                    $offers = DB::table('products')->where('type', 'Offer')->limit('4')->get();
+                @endphp
+                @foreach ($offers as $products)
+                    <div class="col-md-3 col-sm-12 float-left mt-3 mb-5">
+                        <div class="card" style="border: 1px solid black;" id="myTable">
+                            <span>
+                                <img src="{{ asset('product/'.$products->banner ) }}" class="card-img-top" style="height: 200px; width: 100%; border-radius: 10px">
+                                <div class="card-body">
+                                    <p class="text-center font-weight-bold">{{ $products->product_name }}</p>
+                                    <p class="text-center font-weight-bold">{{ number_format($products->special_price,2) }}</p>
+                                </div>
+                                <div class="card-footer">
+                                    <form action="{{ route('product.add.cart',$products->id) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" class="btn btn-outline-primary btn-block"><i class="fa fa-shopping-basket"></i> Add To Cart</button>
+                                    </form>
+                                    <br/>
+                                    <a href="{{ route('product.details',$products->id) }}" class="btn  btn-dark btn-block"> View Details</a>
+                                </div>
+                            </span>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+            <div class="col-md-4 mx-auto mb-5 mt-2">
+                <a href="{{ route('offer.product') }}" class="btn btn-info rounded">View More</a>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="shop" style="background-color: whitesmoke">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 mb-5 mt-5">
@@ -145,6 +181,9 @@
                     @endforeach
                 </div>
 
+            </div>
+             <div class="col-md-4 mx-auto mb-2 mt-2">
+                <a href="{{ route('allshop.shop') }}" class="btn btn-info rounded">View More</a>
             </div>
         </div>
     </section>

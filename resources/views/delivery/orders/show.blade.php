@@ -164,7 +164,7 @@
                                 <select name="process_status" class="form-control">
                                     <option disabled value="1"  {{ $orders->process_status == 1 ? 'selected' : '' }}>Rechived</option>
                                     <option disabled value="2"  {{ $orders->process_status == 2 ? 'selected' : '' }}>Assigned</option>
-                                    <option disabled value="3"  {{ $orders->process_status == 3 ? 'selected' : '' }}>Processing</option>
+                                    <option value="3"  {{ $orders->process_status == 3 ? 'selected' : '' }}>Processing</option>
                                     <option value="4"  {{ $orders->process_status == 4 ? 'selected' : '' }}>Complete</option>
                                 </select>
                             </div>

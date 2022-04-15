@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\DeliverymanController;
 use App\Http\Controllers\Admin\GoogleMapController;
 use App\Http\Controllers\Admin\OrderController;
@@ -63,6 +64,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::resource('orders',OrderController::class);
     Route::get('reports', [ReportController::class, 'index'])->name('report.index');
     Route::get('reports/search', [ReportController::class, 'search'])->name('reports.search');
+    Route::resource('contact', ContactController::class);
 });
 
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){

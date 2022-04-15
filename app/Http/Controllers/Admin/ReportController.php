@@ -25,11 +25,14 @@ class ReportController extends Controller
         $page_name = "Monthly Report";
         $search = $request->get('search');
         $data = DB::table('orders')
-        ->whereMonth('created_at', '=', $search)
+            ->whereMonth('created_at', '=', $search)
+            ->where('status', 'Processing')
             ->get();
+
         if (count($data) > 0) {
             $total = DB::table('orders')
-            ->whereMonth('created_at', '=', $search)
+                ->whereMonth('created_at', '=', $search)
+                ->where('status', 'Processing')
                 ->sum('amount');
         } else {
             $total = 0;

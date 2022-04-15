@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Pages;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\contactus;
 use Illuminate\Http\Request;
+use Mockery\Matcher\Contains;
 
-class ContactUsController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +16,9 @@ class ContactUsController extends Controller
      */
     public function index()
     {
-        $page_name = "Contact With US";
-        return view('pages.contact-us.index', compact('page_name'));
+        $page_name = "Guest Message";
+        $msg = contactus::all();
+        return view('admin.contact.index', compact('page_name','msg'));
     }
 
     /**
@@ -26,7 +28,7 @@ class ContactUsController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -37,26 +39,7 @@ class ContactUsController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name'     => 'required',
-            'email'    => 'required',
-            'phone'    => 'required',
-            'message'  => 'required'
-        ],[
-            'name.required'     => 'Please Enter Name',
-            'email.required'    => 'Please Enter Email',
-            'phone.required'    => 'Please Enter Phone Number',
-            'message.required'  => 'Please Write Your Message',
-        ]);
-
-        $contact = new contactus();
-        $contact->name    = $request->name;
-        $contact->email   = $request->email;
-        $contact->phone   = $request->phone;
-        $contact->message = $request->message;
-        $contact->save();
-        return back()->with('message','Message Sent Successful');
-
+        //
     }
 
     /**
@@ -101,6 +84,8 @@ class ContactUsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $msg = contactus::find($id);
+        $msg->delete();
+        return back()->with('success','Delete Successful');
     }
 }

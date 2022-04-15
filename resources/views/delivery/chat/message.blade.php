@@ -10,7 +10,7 @@
                         @if($msg->send_from == 'user')
                             <div class="form-group input-group">
                                 <div class="input-group-prepend">
-                                    <img src="{{ asset('user/images/'.Auth::user()->image) }}" style="height: 50px; width: 50px; border-radius: 50%;">
+                                    <img src="{{ asset('user/images/'.$user_id->image) }}" style="height: 50px; width: 50px; border-radius: 50%;">
                                 </div>
                                 <textarea class="font-weight-bold form-control" disabled style="height: 56px; border-radius: 16px; margin-left: 8px; margin-top: 10px"> {{ $msg->message }}</textarea>
                             </div>
@@ -19,7 +19,7 @@
                             <div class="form-group input-group">
                                 <textarea class="font-weight-bold form-control" disabled style="height: 56px; border-radius: 16px; margin-left: 8px; margin-top: 10px">{{ $msg->message }}</textarea>
                                 <div class="input-group-prepend">
-                                    <img src="{{ asset('user/images/'.$user_id->image) }}" style="height: 50px; width: 50px; border-radius: 50%;">
+                                    <img src="{{ asset('user/images/'.Auth::user()->image) }}" style="height: 50px; width: 50px; border-radius: 50%;">
                                 </div>
                             </div>
                             <p class="text-dark float-left" style="font-size: 9px">{{ $msg->created_at }}</p>

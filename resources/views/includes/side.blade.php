@@ -59,6 +59,9 @@
                 <li class="menu-item-has-children">
                     <a href="{{ route('report.index') }}" class="dropdown-toggle"> <i class="menu-icon fa fa-bars"></i>Report</a>
                 </li>
+                 <li class="menu-item-has-children">
+                    <a href="{{ route('contact.index') }}" class="dropdown-toggle"> <i class="menu-icon fa fa-bars"></i>Public Message</a>
+                </li>
             @elseif (Auth::user()->role_id == '2')
 
                 <li class="active">
