@@ -4,7 +4,7 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-menu" aria-controls="main-menu" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fa fa-bars"></i>
         </button>
-        <a class="navbar-brand" href="./">{{ Auth::user()->name }}</a>
+        <a class="navbar-brand" href="{{ route('admin.index') }}">{{ Auth::user()->name }}</a>
         <a class="navbar-brand hidden" href="./"><img src="{{ asset('template/images/logo2.png') }}" alt="Logo"></a>
     </div>
 
@@ -13,7 +13,11 @@
         <ul class="nav navbar-nav">
             @if (Auth::user()->role_id == '1')
                 <li class="active">
-                    <a href=""> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <a href="{{ route('admin.index') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                </li>
+                </li>
+                    <li class="menu-item-has-children">
+                    <a href="{{ url('/') }}"> <i class="menu-icon fa fa-bars"></i>Home </a>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Categories</a>
@@ -65,7 +69,11 @@
             @elseif (Auth::user()->role_id == '2')
 
                 <li class="active">
-                    <a href=""> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <a href="{{ route('user.index') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                </li>
+                </li>
+                    <li class="menu-item-has-children">
+                    <a href="{{ url('/') }}"> <i class="menu-icon fa fa-bars"></i>Home </a>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Profile</a>
@@ -80,7 +88,10 @@
 
             @elseif (Auth::user()->role_id == '3')
                 <li class="active">
-                    <a href=""> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                    <a href="{{ route('delivery.index') }}"> <i class="menu-icon fa fa-dashboard"></i>Dashboard </a>
+                </li>
+                    <li class="menu-item-has-children">
+                    <a href="{{ url('/') }}"> <i class="menu-icon fa fa-bars"></i>Home </a>
                 </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Profile</a>
