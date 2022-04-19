@@ -18,7 +18,7 @@ class OrderController extends Controller
     public function index()
     {
         $page_name = "Order List";
-        $orders = DB::table('orders')->where('status', 'Processing')->get();
+        $orders = DB::table('orders')->where('status', 'Processing')->orderBy('id','DESC')->get();
         return view('admin.orders.index', compact('page_name', 'orders'));
     }
 

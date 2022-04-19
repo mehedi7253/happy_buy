@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DeliverymanController extends Controller
@@ -17,7 +18,7 @@ class DeliverymanController extends Controller
     public function index()
     {
         $page_name = "All Delivery Boy";
-        $boys      = User::all()->where('role_id','3');
+        $boys      = DB::table('users')->where('role_id','3')->orderBy('id','DESC')->get();
         return view('admin.delivery-boy.index', compact('page_name','boys'));
     }
 
