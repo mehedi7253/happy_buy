@@ -97,6 +97,7 @@ Route::get('category/{id}', [PageController::class, 'prodcutCategory'])->name('c
 Route::PUT('add-to-cart/{id}', [CartController::class, 'addToCart'])->name('product.add.cart');
 Route::get('cart',[CartController::class, 'index'])->name('cart.index');
 Route::PUT('quantity-update/{id}', [CartController::class, 'quantityUpdate'])->name('qauntity.update');
+Route::PUT('quantity-decrement/{id}', [CartController::class, 'quantityDecrement'])->name('qauntity.decrement');
 Route::delete('remove-item/{id}', [CartController::class, 'removeItem'])->name('carts.destroy');
 Route::post('order-product',[ProductOrderController::class, 'orderProduct'])->name('orderProduct');
 Route::get('next-orders/{id}', [ProductOrderController::class, 'nextOrder'])->name('next.order.show');

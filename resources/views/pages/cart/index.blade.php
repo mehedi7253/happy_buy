@@ -28,17 +28,25 @@
                                             <td>
                                                 <img src="{{ asset('product/'.$item->banner) }}" style="height: 50px; width: 100%">
                                             </td>
-                     
+
                                             <td>{{ number_format($item->sell_price, 2) }}</td>
                                             <td style="width: 30%">
-                                                <form action="{{ route('qauntity.update', $item->cartID) }}" method="post">
-                                                    @csrf
-                                                    @method('PUT')
-                                                    <div class="form-group input-group">
-                                                        <input type="number" min="1" id="quantity" name="quantity" class="form-control" value="{{ $item->quantity }}">
-                                                        <button type="submit" name="update" class="btn btn-danger"><i class="fa fa-arrow-circle-up"></i></button>
-                                                    </div>
-                                                </form>
+                                               <div class="input-group quantity">
+                                                    <form action="{{ route('qauntity.decrement', $item->cartID) }}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="submit" class="btn btn-danger" onclick="decrementValue()" value="-" />
+                                                    </form>
+                                                    <input type="text" name="quantity" class="form-control col-6" value="{{ $item->quantity }}" maxlength="2" max="10" size="1" id="number{{ $item->cartID }}" />
+
+                                                     <form action="{{ route('qauntity.update', $item->cartID) }}" method="post">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <input type="submit" class="btn btn-success" onclick="incrementValue()" value="+" />
+                                                    </form>
+
+                                                </div>
+
                                             </td>
                                             <td>
                                                 {{ number_format($item->sell_price * $item->quantity,2) }}
@@ -126,4 +134,28 @@
 
         </div>
     </section>
+    @endsection
+
+    @section('script')
+    <script type="text/javascript">
+        function incrementValue()
+        {
+            var value = parseInt(document.getElementById('number').value, 10);
+            value = isNaN(value) ? 0 : value;
+            if(value<10){
+                value++;
+                    document.getElementById('number').value = value;
+            }
+        }
+        function decrementValue()
+        {
+            var value = parseInt(document.getElementById('number').value, 10);
+            value = isNaN(value) ? 0 : value;
+            if(value>1){
+                value--;
+                    document.getElementById('number').value = value;
+            }
+
+        }
+    </script>
     @endsection

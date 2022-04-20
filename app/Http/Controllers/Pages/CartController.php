@@ -78,9 +78,12 @@ class CartController extends Controller
 
     public function quantityUpdate(Request $request, $id)
     {
-        $update = cart::find($id);
-        $update->quantity = $request->quantity;
-        $update->save();
+        cart::find($id)->increment('quantity');
+        return back();
+    }
+    public function quantityDecrement(Request $request, $id)
+    {
+        cart::find($id)->decrement('quantity');
         return back();
     }
 
