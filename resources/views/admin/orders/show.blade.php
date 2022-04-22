@@ -177,7 +177,7 @@
                                 @if ($orders->delivery_boy_id == null)
                                     <select name="delivery_boy_id" class="form-control">
                                         @foreach ($man as $boy)
-                                            <option value="{{ $boy->UserID }}" {{ $boy->UserID == $boy->UserID ? 'selected' : '' }}>{{ $boy->name }}</option>
+                                            <option value="{{ $boy->id }}" {{ $boy->id == $boy->id ? 'selected' : '' }}>{{ $boy->name }}</option>
                                         @endforeach
                                     </select>
                                 @else

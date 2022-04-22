@@ -1,36 +1,18 @@
 @extends('includes.app')
     @section('content')
 
-        <div class="breadcrumbs">
-            <div class="col-sm-4">
-                <div class="page-header float-left">
-                    <div class="page-title">
-                        <h1>Dashboard</h1>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <div class="page-header float-right">
-                    <div class="page-title">
-                        <ol class="breadcrumb text-right">
-                            <li class="active">Dashboard</li>
-                        </ol>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <div class="content mt-3 mb-5">
             <div class="card">
                 <div class="card-header">
+                    <h4>{{ $page_name }}</h4>
+                </div>
+                <div class="card-body">
                     @if($message = Session::get('success'))
                         <div class="alert alert-success">
                             <button type="button" class="close" data-dismiss="alert">x</button>
                             <strong>{{ $message }}</strong>
                         </div>
                     @endif
-                </div>
-                <div class="card-body">
                     <form action="{{ route('category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @method('PUT')
