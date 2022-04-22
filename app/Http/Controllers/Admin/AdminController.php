@@ -35,6 +35,11 @@ class AdminController extends Controller
 
         return view('admin.index', compact('orders', 'monthly_earn', 'neworder', 'members', 'boy'));
     }
+    public function customer(){
+        $page_name = "All Customer's List";
+        $customers = User::all()->where('role_id','2');
+        return view('admin.users.index', compact('page_name','customers'));
+    }
 
 
 }

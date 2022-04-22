@@ -47,6 +47,10 @@
                         <li><i class="fa fa-edit"></i><a href="{{ route('shop-category.index') }}">Manage category</a></li>
                     </ul>
                 </li>
+                </li>
+                    <li class="menu-item-has-children">
+                    <a href="{{ route('customer.list') }}"> <i class="menu-icon fa fa-bars"></i>Customers </a>
+                </li>
                 <li class="menu-item-has-children dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bars"></i>Delivary Man</a>
                     <ul class="sub-menu children dropdown-menu">

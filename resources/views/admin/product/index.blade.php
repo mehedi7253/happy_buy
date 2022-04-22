@@ -32,7 +32,13 @@
                                         <td>{{ ++$i }}</td>
                                         <td>{{ $product->product_name }}</td>
                                         <td>{{ $product->Categories->category_name }}</td>
-                                        <td>{{ number_format($product->product_price,2) }}</td>
+                                        <td>
+                                            @if ($product->type == 'Regular')
+                                                {{ number_format($product->product_price,2) }}
+                                            @else
+                                                {{ number_format($product->special_price,2) }}
+                                            @endif
+                                        </td>
                                         <td>
                                             @if ($product->status == '0')
                                                  <span class="label text-success">Available</span>

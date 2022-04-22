@@ -47,17 +47,21 @@ class CartController extends Controller
                 ->get();
 
             if(count($cart_product) > 0){
-                DB::table('carts')->where('product_id','=', $product->id)->increment('quantity');
+                if($request->quantity)
+                {
+                    DB::table('carts')->where('product_id', '=', $product->id)->increment('quantity');
+                }else{
+                    DB::table('carts')->where('id', $id)->update(['quantity' => $request->quantity]);
+                }
+
                 return back()->with('message','Product Add In Cart Successfull');
             }else{
-
-
-
                 $cart = new cart();
                 $cart->product_id  = $product->id;
                 $cart->user_id     = Auth::user()->id;
                 $cart->shop_id     = 1;
                 $cart->quantity    = 1;
+
 
                 if ($product->type == 'Regular') {
                     $cart->sell_price  = $product->product_price;

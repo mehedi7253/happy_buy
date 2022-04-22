@@ -19,7 +19,7 @@
                     <div class="col-md-3 col-sm-12 float-left mt-3 mb-5">
                         <div class="card" style="border: 1px solid black;" id="myTable">
                             <span>
-                                <img src="{{ asset('product/'.$products->banner ) }}" class="card-img-top" style="height: 200px; width: 100%; border-radius: 10px">
+                                <img src="{{ asset('product/'.$products->banner ) }}" class="card-img-top" style="height: 200px; width: 100%;">
                                 <div class="card-body">
                                     <p class="text-center font-weight-bold">{{ $products->product_name }}</p>
                                     <p class="text-center font-weight-bold">{{ number_format($products->special_price,2) }}</p>

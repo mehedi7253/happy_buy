@@ -7,6 +7,12 @@
                     <h3>{{ $page_name }} </h3>
                 </div>
                 <div class="card-body">
+                     @if($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <button type="button" class="close" data-dismiss="alert">x</button>
+                            <strong>{{ $message }}</strong>
+                        </div>
+                    @endif
                     <div class="table-responsive">
                         <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
                             <thead>
@@ -17,6 +23,7 @@
                                     <th>Payment</th>
                                     <th>Delivery</th>
                                     <th>Details</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,11 +45,20 @@
                                             @elseif ($order->process_status == '2')
                                                 <label class="btn btn-outline-primary btn-sm rounded">Processing</label>
                                             @elseif ($order->process_status == '3')
+                                                <label class="btn btn-outline-primary btn-sm rounded"> On the way</label>
+                                            @elseif ($order->process_status == '4')
                                                 <label class="btn btn-outline-success btn-sm rounded">Complete</label>
                                             @endif
                                         </td>
                                         <td>
                                             <a href="{{ route('orders.show',$order->id) }}" class="btn btn-success btn-small rounded">View</a>
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('orders.destroy', $order->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure to delete !!');"><i class="fa fa-trash"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

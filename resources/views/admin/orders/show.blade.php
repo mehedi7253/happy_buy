@@ -174,12 +174,21 @@
                             </div>
                             <div class="form-group">
                                 <label>Assign Delivery Boy<sup class="text-danger font-weight-bold">*</sup></label>
-                                <select name="delivery_boy_id" class="form-control">
-                                    <option>-------Select One-------</option>
-                                    @foreach ($man as $boy)
-                                        <option value="{{ $boy->id }}" {{ $boy->id == $boy->id ? 'selected' : '' }}>{{ $boy->name }}</option>
+                                @if ($orders->delivery_boy_id == null)
+                                    <select name="delivery_boy_id" class="form-control">
+                                        @foreach ($man as $boy)
+                                            <option value="{{ $boy->UserID }}" {{ $boy->UserID == $boy->UserID ? 'selected' : '' }}>{{ $boy->name }}</option>
+                                        @endforeach
+                                    </select>
+                                @else
+                                    @php
+                                        $assign_boy = DB::select(DB::raw("SELECT * FROM orders, users WHERE users.id = orders.delivery_boy_id AND orders.delivery_boy_id = $orders->delivery_boy_id AND orders.id = $orders->id"));
+                                    @endphp
+                                    @foreach ($assign_boy as $dboy)
+                                        <input type="text" class="form-control" value="{{ $dboy->name }}" disabled>
                                     @endforeach
-                                </select>
+                                @endif
+
                             </div>
                             <div class="form-group">
                                 <input type="submit" name="btn" class="btn btn-secondary btn-block rounded" value="Update Order">
@@ -187,6 +196,30 @@
                         </form>
                     </div>
                 </div>
+
+                {{-- <div class="card">
+                   <div class="card-header">
+                        <h5>Delivery Boy</h5>
+                   </div>
+                   <div class="card-body">
+                       <table class="table table-bordered">
+                            @foreach ($man as $i=>$boy)
+                                <tr>
+                                    <td>{{ ++$i }}</td>
+                                    <td class="text-capitalize">
+                                        {{ $boy->name }}
+                                        @if ($boy->id  && $orders->process_status < '4')
+                                            <sup>In Active</sup>
+                                        @else
+                                            <sup>Active</sup>
+                                        @endif
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                       </table>
+                   </div>
+                </div> --}}
             </div>
         </div>
     </div>

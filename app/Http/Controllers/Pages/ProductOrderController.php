@@ -33,7 +33,7 @@ class ProductOrderController extends Controller
         }
         $orderId = DB::getPdo()->lastInsertId();
         $empty = DB::select(DB::raw("DELETE FROM carts WHERE user_id = '$user_id'"));
-        
+
         return redirect()->route('next.order.show',[$orderId])->with('message','Order Placed Successful');
     }
 
@@ -41,12 +41,10 @@ class ProductOrderController extends Controller
     {
         $orderId = productorder::find($id);
         $invoice = $orderId->invoice_nuber;
-
         $items = DB::table('productorders')
             ->join('products','products.id','productorders.product_id')
             ->where('invoice_nuber',$invoice)
             ->get();
-
         $subtotals = DB::select(DB::raw("SELECT SUM(sell_price * quantity) as SubTotal FROM productorders WHERE invoice_nuber = '$invoice'"));
 
         return view('pages.cart.confirm-order', compact('items', 'subtotals'));

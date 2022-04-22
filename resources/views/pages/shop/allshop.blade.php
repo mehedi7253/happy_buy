@@ -8,7 +8,7 @@
                     <h3 class="text-center text-uppercase font-weight-bold mb-3">Shops</h3>
                     @foreach ($shop as $shops)
                         <div class="col-md-4 col-sm-12 float-left">
-                            <div class="card"  style="border: 2px solid red; border-radius: 10px">
+                            <div class="card"  style="border: 2px solid red;">
                                 <div class="card-header" style="background-color: red">
                                     <h4 class="text-center text-white">{{ $shops->shop_name }}</h4>
                                 </div>

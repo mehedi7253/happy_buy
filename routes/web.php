@@ -65,6 +65,7 @@ Route::group(['prefix' => 'admin','middleware' => ['admin', 'auth']], function (
     Route::get('reports', [ReportController::class, 'index'])->name('report.index');
     Route::get('reports/search', [ReportController::class, 'search'])->name('reports.search');
     Route::resource('contact', ContactController::class);
+    Route::get('all-customers', [AdminController::class, 'customer'])->name('customer.list');
 });
 
 Route::group(['prefix' => 'user','middleware' => ['user', 'auth']], function (){

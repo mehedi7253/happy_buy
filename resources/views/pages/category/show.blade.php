@@ -31,9 +31,7 @@
                             @foreach ($totalSell as $sell)
                                 <p class="ml-2 text-capitalize font-weight-bold">Total Sell: <span class="font-weight-bold text-danger">  {{ $sell->TotalSell }} </span></p>
                              @endforeach
-                            <p class="ml-2">
-                                <?php echo $product->description?>
-                            </p>
+
                             <form action="{{ route('product.add.cart',$product->id) }}" method="POST">
                                 @csrf
                                 @method('PUT')
@@ -41,6 +39,9 @@
                                     <input type="submit" class="btn btn-success col-5" value="Add To Cart">
                                 </div>
                             </form>
+                             <p class="ml-2">
+                                <?php echo $product->description?>
+                            </p>
                         </div>
                     </div>
                 </div>

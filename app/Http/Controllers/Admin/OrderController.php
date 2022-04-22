@@ -61,6 +61,8 @@ class OrderController extends Controller
             ->where('orders.invoice_number', $invoice)
             ->get();
 
+        // $active_boys = DB::select(DB::raw("SELECT users.name, orders.id as OrderID, orders.delivery_boy_id, orders.process_status FROM users, orders WHERE users.id = orders.delivery_boy_id AND orders.process_status != 4"));
+
         $subtotal = DB::select(DB::raw("SELECT SUM(sell_price * quantity) as SubTotal FROM productorders WHERE invoice_nuber = '$invoice'"));
 
         return view('admin.orders.show', compact('page_name', 'orders', 'order_items', 'subtotal', 'man'));
@@ -102,6 +104,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $orders = order::find($id);
+        $orders->delete();
+        return back()->with('success','Order Delete Successful');
     }
 }

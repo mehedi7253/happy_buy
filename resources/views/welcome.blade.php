@@ -123,7 +123,7 @@
                     <div class="col-md-3 col-sm-12 float-left mt-3 mb-5">
                         <div class="card" style="border: 1px solid black;" id="myTable">
                             <span>
-                                <img src="{{ asset('product/'.$products->banner ) }}" class="card-img-top" style="height: 200px; width: 100%; border-radius: 10px">
+                                <img src="{{ asset('product/'.$products->banner ) }}" class="card-img-top" style="height: 200px; width: 100%;">
                                 <div class="card-body">
                                     <p class="text-center font-weight-bold">{{ $products->product_name }}</p>
                                     <p class="text-center font-weight-bold">{{ number_format($products->special_price,2) }}</p>
@@ -156,7 +156,7 @@
                     <h3 class="text-center text-uppercase font-weight-bold mb-3">Shops</h3>
                     @foreach ($shop as $shops)
                         <div class="col-md-4 col-sm-12 float-left">
-                            <div class="card"  style="border: 2px solid red; border-radius: 10px">
+                            <div class="card"  style="border: 2px solid red;">
                                 <div class="card-header" style="background-color: red">
                                     <h4 class="text-center text-white">{{ $shops->shop_name }}</h4>
                                 </div>

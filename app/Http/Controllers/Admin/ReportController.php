@@ -19,9 +19,7 @@ class ReportController extends Controller
     public function search(Request $request)
     {
         $month = date('m');
-
         // return $month;
-
         $page_name = "Monthly Report";
         $search = $request->get('search');
         $data = DB::table('orders')

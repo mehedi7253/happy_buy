@@ -47,8 +47,8 @@ class ProductController extends Controller
             'product_price' => 'required',
             'description'   => 'required',
             'type'          => 'required',
-            'banner'        => 'required |mimes:jpeg,jpg,png|max:7048',
-            'imageFile.*'  => 'mimes:jpeg,jpg,png|max:7048',
+            'banner'        => 'required |mimes:jpeg,jpg,png,webp|max:7048',
+            'imageFile.*'  => 'mimes:jpeg,jpg,png,webp|max:7048',
         ],[
             'category_id.required'   => "Please Enter Category",
             'product_name.requried'  => "Please Enter Prodcut Name",
@@ -61,7 +61,6 @@ class ProductController extends Controller
             'imageFile.mimes'        => 'Please Select Jpg, Png, Jpeg File',
             'imageFile.mimes'        => 'Please Select Less Then 7MB File',
         ]);
-
         $product = new Product();
         $product->category_id    = $request->category_id;
         $product->product_name   = $request->product_name;
@@ -70,8 +69,6 @@ class ProductController extends Controller
         $product->status         = $request->status;
         $product->type           = $request->type;
         $product->special_price  = $request->special_price;
-
-
         if ($request->hasFile('banner')) {
             $file = $request->file('banner');
             $extension = $file->getClientOriginalExtension();
@@ -82,8 +79,6 @@ class ProductController extends Controller
             return $request;
             $product->banner = '';
         }
-
-
        if($request->imageFile == ''){
            //
        }else{
@@ -144,7 +139,7 @@ class ProductController extends Controller
             'product_name'  => 'required',
             'product_price' => 'required',
             'description'   => 'required',
-            'imageFile.*'  => 'mimes:jpeg,jpg,png|max:7048',
+            'imageFile.*'  => 'mimes:jpeg,jpg,png,webp|max:7048',
         ],[
             'category_id.required'   => "Please Enter Category",
             'product_name.requried'  => "Please Enter Prodcut Name",

@@ -22,7 +22,7 @@ class UserSeeder extends Seeder
                 'role_id'  => '1',
                 'address'  => 'Badda',
                 'phone'    => '01941697253',
-                'image'    => 'admin.jpg',
+                'image'    => 'admin.png',
                 'password' => Hash::make('admin'),
             ],[
                 'name'     => 'user',
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
                 'role_id'  => '2',
                 'address'  => 'Badda',
                 'phone'    => '01941697253',
-                'image'    => 'admin.jpg',
+                'image'    => 'admin.png',
                 'password' => Hash::make('user'),
             ],[
                 'name'     => 'Delivery Boy',
@@ -38,7 +38,7 @@ class UserSeeder extends Seeder
                 'role_id'  => '3',
                 'address'  => 'Badda',
                 'phone'    => '01941697253',
-                'image'    => 'admin.jpg',
+                'image'    => 'admin.png',
                 'password' => Hash::make('boy'),
             ],
         ]);

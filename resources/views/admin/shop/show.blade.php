@@ -42,10 +42,9 @@
                                 <th>Shop Description: </th>
                                 <td>{{ $shop->shop_info }}</td>
                               </tr>
-
                         </table>
                     </div>
-                    <hr/>
+
                     <h3 class="ml-5">Google Map</h3>
                     <div class="col-md-10 mx-auto ml-5">
                         <?php echo $shop->google_map ?>

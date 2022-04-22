@@ -35,6 +35,10 @@
                                     </span>
                                 @enderror
                             </div>
+                             <div class="form-group">
+                                <label>Offer Price: <sup class="font-weight-bold text-danger">Select Only Offer Product</sup></label>
+                                <input type="number" name="special_price" class="form-control" value="{{ $product->special_price }}">
+                            </div>
                             <div class="form-group">
                                 <label>Description <sup class="text-danger font-weight-bold">*</sup></label><br/>
                                 <textarea class="form-control @error('description') is-invalid @enderror" name="description" id="application">{{ $product->description }}</textarea>
@@ -52,6 +56,19 @@
                                     @foreach ($categories as $category)
                                         <option value="{{ $category->id }}" {{ $category->id == $product->category_id ? 'selected' : '' }}>{{ $category->category_name }}</option>
                                     @endforeach
+                                </select>
+                            </div>
+                             <div class="form-group">
+                                <label>prdocut Type: <sup class="font-weight-bold text-danger">*</sup></label>
+                                <select class="form-control" name="type">
+                                    @if ($product->type == 'Regular')
+                                        <option value="Regular" selected>Regular</option>
+                                        <option value="Offer">Offer</option>
+                                    @else
+                                        <option value="Regular">Regular</option>
+                                        <option value="Offer" selected>Offer</option>
+                                    @endif
+
                                 </select>
                             </div>
                             <div class="form-group">
